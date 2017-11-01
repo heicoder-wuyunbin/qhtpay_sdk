@@ -6,9 +6,40 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit4589f4709737edba8cf97a144cac4ad6
 {
+    public static $prefixLengthsPsr4 = array (
+        'q' => 
+        array (
+            'qhtpay\\util\\' => 12,
+            'qhtpay\\service\\' => 15,
+            'qhtpay\\lib\\' => 11,
+            'qhtpay\\constants\\' => 17,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'qhtpay\\util\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/qhtpay/util',
+        ),
+        'qhtpay\\service\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/qhtpay/service',
+        ),
+        'qhtpay\\lib\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/qhtpay/lib',
+        ),
+        'qhtpay\\constants\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/qhtpay/constants',
+        ),
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit4589f4709737edba8cf97a144cac4ad6::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit4589f4709737edba8cf97a144cac4ad6::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

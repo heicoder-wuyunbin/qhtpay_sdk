@@ -6,4 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'qhtpay\\util\\' => array($baseDir . '/qhtpay/util'),
+    'qhtpay\\service\\' => array($baseDir . '/qhtpay/service'),
+    'qhtpay\\lib\\' => array($baseDir . '/qhtpay/lib'),
+    'qhtpay\\constants\\' => array($baseDir . '/qhtpay/constants'),
 );

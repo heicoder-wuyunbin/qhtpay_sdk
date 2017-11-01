@@ -4,14 +4,11 @@
   "license":"MIT",
   "type":"project",
   "autoload":{
-    "classmap":[
-      "database"
-    ],
     "psr-4":{
-      "qhtpay\\lib":"lib/",
-      "qhtpay\\constants":"constants/",
-      "qhtpay\\service":"service/",
-      "qhtpay\\util":"util"
+      "qhtpay\\lib\\":"qhtpay/lib/",
+      "qhtpay\\constants\\":"qhtpay/constants/",
+      "qhtpay\\service\\":"qhtpay/service/",
+      "qhtpay\\util\\":"qhtpay/util/"
     }
   }
 }

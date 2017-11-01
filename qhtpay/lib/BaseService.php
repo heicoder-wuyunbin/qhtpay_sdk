@@ -12,6 +12,10 @@ class BaseService
         $curl=Curl::init();
         $result=$curl->post($params)->submit($url);
 
-        return $result;
+        if($result['error']=='0'){
+            return $result['body'];
+        }else{
+            return ;
+        }
     }
 }

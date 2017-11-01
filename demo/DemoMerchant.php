@@ -33,8 +33,20 @@ class DemoMerchant
         $result=qhtpay\service\MerchantService::import($req_data);
         return $result;
     }
+
+    public static function import_query(){
+        $req_data = array(
+            'cellphone' => '15116998567',
+            'id_card' => '441427198801011245',
+            'sign_type' => 'MD5',
+        );
+        $result=qhtpay\service\MerchantService::import_query($req_data);
+        return $result;
+    }
 }
 
-$result = DemoMerchant::import();
-echo "<pre>";
-var_dump($result);
+$import_result = DemoMerchant::import();
+$query_result=DemoMerchant::import_query();
+echo '<pre>';
+var_dump(json_decode($import_result,true));
+var_dump(json_decode($query_result,true));

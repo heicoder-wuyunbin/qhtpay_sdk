@@ -1,7 +1,5 @@
 <?php
 require '../vendor/autoload.php';
-use qhtpay\service\MerchantService;
-
 class DemoMerchant
 {
     public static function import()
@@ -32,7 +30,7 @@ class DemoMerchant
             'notify' => 'http://www.baidu.com',
             'page_notify' => 'http://www.baidu.com/page_notify'
         );
-        $result = MerchantService::import($req_data);
+        $result=qhtpay\service\MerchantService::import($req_data);
         return $result;
     }
 }

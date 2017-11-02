@@ -42,14 +42,4 @@ class PayService extends BaseService{
         $params['sign']=md5(json_encode($params).'&sign_key='.ApiConstants::KEY);
         return parent::request(ApiConstants::CONVENIENT_PAY_URL,json_encode($params));
     }
-
-    /**
-     * @function 订单查询
-     * @param array $params
-     */
-    public static function order_query($params=array()){
-        ksort($params);
-        $params['sign']=md5(json_encode($params).'&sign_key='.ApiConstants::KEY);
-        return parent::request(ApiConstants::ORDER_QUERY_URL,json_encode($params));
-    }
 }

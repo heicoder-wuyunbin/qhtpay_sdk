@@ -2,15 +2,26 @@
 namespace qhtpay\service;
 use qhtpay\lib\BaseService;
 use qhtpay\constants\ApiConstants;
+use qhtpay\util\SignHelper;
+
 class PayService extends BaseService{
+
+
     /**
-     * @function 快捷支付
      * @param array $params
+     * @return null|string
      */
     public static function quick_pay($params=array()){
         ksort($params);
         $params['sign']=md5(json_encode($params).'&sign_key='.ApiConstants::KEY);
-        return parent::request(ApiConstants::QUICK_PAY_URL,json_encode($params));
+        $response_str=parent::request(ApiConstants::QUICK_PAY_URL,json_encode($params));
+        //验签
+        if(SignHelper::verify_md5_sign($response_str,ApiConstants::KEY)){
+            return $response_str;
+        }else{
+            $output['msg']='签名错误';
+            return json_encode($output);
+        }
     }
 
     /**
@@ -20,7 +31,14 @@ class PayService extends BaseService{
     public static function scan_code_pay($params=array()){
         ksort($params);
         $params['sign']=md5(json_encode($params).'&sign_key='.ApiConstants::KEY);
-        return parent::request(ApiConstants::SCAN_CODE_URL,json_encode($params));
+        $response_str=parent::request(ApiConstants::SCAN_CODE_URL,json_encode($params));
+        //验签
+        if(SignHelper::verify_md5_sign($response_str,ApiConstants::KEY)){
+            return $response_str;
+        }else{
+            $output['msg']='签名错误';
+            return json_encode($output);
+        }
     }
 
     /**
@@ -30,7 +48,14 @@ class PayService extends BaseService{
     public static function bar_code_pay($params=array()){
         ksort($params);
         $params['sign']=md5(json_encode($params).'&sign_key='.ApiConstants::KEY);
-        return parent::request(ApiConstants::BAR_CODE_URL,json_encode($params));
+        $response_str=parent::request(ApiConstants::BAR_CODE_URL,json_encode($params));
+        //验签
+        if(SignHelper::verify_md5_sign($response_str,ApiConstants::KEY)){
+            return $response_str;
+        }else{
+            $output['msg']='签名错误';
+            return json_encode($output);
+        }
     }
 
     /**
@@ -40,6 +65,13 @@ class PayService extends BaseService{
     public static function convenient_pay($params=array()){
         ksort($params);
         $params['sign']=md5(json_encode($params).'&sign_key='.ApiConstants::KEY);
-        return parent::request(ApiConstants::CONVENIENT_PAY_URL,json_encode($params));
+        $response_str=parent::request(ApiConstants::CONVENIENT_PAY_URL,json_encode($params));
+        //验签
+        if(SignHelper::verify_md5_sign($response_str,ApiConstants::KEY)){
+            return $response_str;
+        }else{
+            $output['msg']='签名错误';
+            return json_encode($output);
+        }
     }
 }

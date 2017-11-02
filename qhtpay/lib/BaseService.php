@@ -15,7 +15,7 @@ class BaseService
         if($result['error']=='0'){
             return $result['body'];
         }else{
-            return ;
+            return null;
         }
     }
 }
